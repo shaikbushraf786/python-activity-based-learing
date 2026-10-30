@@ -36,7 +36,7 @@ The program displays eligible students along with their ranks.
 
 ## 3. Flowchart
 
-``` Mermaid
+``` mermaid
 flowchart TD
     A([Start]) --> B[/Enter number of students/]
     B --> C[/Enter student details/]
