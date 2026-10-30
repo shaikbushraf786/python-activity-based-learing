@@ -37,7 +37,7 @@ The program should:
 ## 3. Flowchart (Mermaid Code)
 
 flowchart TD
-```mermaid Code
+``` mermaid 
     A([Start]) --> B[/Enter patient details/]
     B --> C[/Enter hospital charges/]
     C --> D[Calculate total bill]
@@ -64,9 +64,6 @@ flowchart TD
     N --> U([Stop])
     T --> U
 ```
-
-
-## 4. Python Source Code
 
 
 
