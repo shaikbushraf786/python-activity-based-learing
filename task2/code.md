@@ -36,7 +36,8 @@ The program should:
 
 ## 3. Flowchart 
 flowchart TD
-  ```  A([Start]) --> B[/Enter patient details/]
+  ```mermaid
+  A([Start]) --> B[/Enter patient details/]
     B --> C[/Enter hospital charges/]
     C --> D[Calculate total bill]
     D --> E{Age >= 60?}
