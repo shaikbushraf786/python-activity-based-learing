@@ -33,33 +33,36 @@ The program should:
 13. Stop the program.
 
 ## 3. Flowchart 
+  ``` mermaid
 flowchart TD
-  ```mermaid
-  A([Start]) --> B[/Enter patient details/]
-    B --> C[/Enter hospital charges/]
-    C --> D[Calculate total bill]
-    D --> E{Age >= 60?}
-    E -->|Yes| F[Apply 10% concession]
-    E -->|No| G[No age concession]
-    F --> H{Bill > 10000?}
-    G --> H
-    H -->|Yes| I[Apply 5% concession]
-    H -->|No| J[No extra concession]
-    I --> K[Calculate final bill]
-    J --> K
-    K --> L[/Enter amount paid/]
-    L --> M{Payment valid?}
-    M -->|No| N[/Display invalid payment/]
-    M -->|Yes| O{Amount paid == final bill?}
-    O -->|Yes| P[Classify as Paid]
-    O -->|No| Q{Amount paid > 0?}
-    Q -->|Yes| R[Classify as Partially Paid]
-    Q -->|No| S[Classify as Pending]
-    P --> T[/Display bill details/]
-    R --> T
-    S --> T
-    N --> U([Stop])
-    T --> U
+    A([Start]) --> B[/Enter patient details/]
+    B --> C[/Enter consultation, diagnostic and treatment charges/]
+    C --> D{Are charges valid?}
+    D -->|No| E[/Display Invalid Charges/]
+    E --> Z([Stop])
+    D -->|Yes| F[Calculate Total Bill]
+    F --> G{Age >= 60?}
+    G -->|Yes| H[Apply 10% Concession]
+    G -->|No| I[No Age Concession]
+    H --> J{Total Bill > 10000?}
+    I --> J
+    J -->|Yes| K[Apply 5% Concession]
+    J -->|No| L[No Extra Concession]
+    K --> M[Calculate Final Bill]
+    L --> M
+    M --> N[/Enter Amount Paid/]
+    N --> O{Payment Valid?}
+    O -->|No| P[/Display Invalid Payment/]
+    P --> Z
+    O -->|Yes| Q{Payment == Final Bill?}
+    Q -->|Yes| R[Fully Paid]
+    Q -->|No| S{Payment > 0?}
+    S -->|Yes| T[Partially Paid]
+    S -->|No| U[Pending]
+    R --> V[/Display Bill Details/]
+    T --> V
+    U --> V
+    V --> Z
 ```
 ## 5. Sample Input
 
