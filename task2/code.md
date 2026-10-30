@@ -64,10 +64,6 @@ flowchart TD
     N --> U([Stop])
     T --> U
 ```
-
-
-
-
 ## 5. Sample Input
 
 ```
