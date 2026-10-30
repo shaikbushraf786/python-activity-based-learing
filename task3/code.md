@@ -2,7 +2,6 @@
 Develop a Python program to process hospital billing details by accepting patient information, consultation charges, diagnostic charges, and treatment charges. Calculate the total bill and apply conditional concessions based on patient age and bill amount. Validate billing constraints to ensure that charges and payments are not negative and payment does not exceed the final bill. Finally, classify patients according to their payment status as Fully Paid, Partially Paid, or Pending.
 
 ## 2. Algorithm
-
 1. Start the program.
 2. Enter patient name and age.
 3. Enter consultation charges.
@@ -25,7 +24,7 @@ Develop a Python program to process hospital billing details by accepting patien
 ## 3. Flowchart
 flowchart TD
 ``` mermaid
-    A([Start]) --> B[/Enter patient details/]
+  A([Start]) --> B[/Enter patient details/]
     B --> C[/Enter consultation, diagnostic and treatment charges/]
     C --> D{Are charges valid?}
     D -->|No| E[/Display Invalid Charges/]
