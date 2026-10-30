@@ -1,4 +1,4 @@
-# 3. Hospital Billing and Patient Classification – Python Program
+
 
 ## 1. Problem Statement
 
@@ -113,6 +113,3 @@ Patient Classification: Partially Paid
 
 Note: The correct final bill for this input is ₹10,200 (₹1,200 senior-citizen concession + ₹600 high-bill concession). The intermediate `12750.0` line in the sample should be ignored; the program actually prints ₹10,200.
 
-## 7. Result
-
-Thus, the Python program successfully calculates hospital bills, applies conditional concessions, validates payment amounts, and classifies patients according to their payment status.
