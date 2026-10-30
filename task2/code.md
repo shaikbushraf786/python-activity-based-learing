@@ -34,8 +34,7 @@ The program should:
 12. Display the bill details and patient classification.
 13. Stop the program.
 
-## 3. Flowchart (Mermaid Code)
-
+## 3. Flowchart 
 flowchart TD
 ``` mermaid 
     A([Start]) --> B[/Enter patient details/]
