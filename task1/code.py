@@ -32,7 +32,6 @@ students.sort(key=lambda x: (
     -x[1], -x[2], x[3]
 ))
 
-# Display results
 print("\n--- Scholarship Eligible Students ---")
 
 if len(students) == 0:
