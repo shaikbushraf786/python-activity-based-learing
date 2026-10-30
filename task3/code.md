@@ -22,7 +22,6 @@ Develop a Python program to process hospital billing details by accepting patien
 15. Stop the program.
 
 ## 3. Flowchart
-flowchart TD
 ``` mermaid
   A([Start]) --> B[/Enter patient details/]
     B --> C[/Enter consultation, diagnostic and treatment charges/]
@@ -65,7 +64,6 @@ Enter diagnostic charges: 3000
 Enter treatment charges: 7000
 Enter amount paid: 5000
 ```
-
 ## 6. Sample Output
 
 ```
