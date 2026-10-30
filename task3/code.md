@@ -1,7 +1,4 @@
-# Hospital Billing and Patient Classification – Python Program
-
 ## 1. Problem Statement
-
 Develop a Python program to process hospital billing details by accepting patient information, consultation charges, diagnostic charges, and treatment charges. Calculate the total bill and apply conditional concessions based on patient age and bill amount. Validate billing constraints to ensure that charges and payments are not negative and payment does not exceed the final bill. Finally, classify patients according to their payment status as Fully Paid, Partially Paid, or Pending.
 
 ## 2. Algorithm
