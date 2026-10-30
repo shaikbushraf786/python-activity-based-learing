@@ -24,7 +24,7 @@ Develop a Python program to process hospital billing details by accepting patien
 
 ## 3. Flowchart
 flowchart TD
-```mermaid
+``` mermaid
     A([Start]) --> B[/Enter patient details/]
     B --> C[/Enter consultation, diagnostic and treatment charges/]
     C --> D{Are charges valid?}
