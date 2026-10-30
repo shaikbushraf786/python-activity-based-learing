@@ -1,4 +1,138 @@
-class MobilePlan:
+flowchart TD
+    A[Start: Input User Usage & Budget, Plan Catalog] --> B[Initialize Eligible Plans List]
+    B --> C{More Plans in Catalog?}
+    C -- Yes --> D[Fetch Next Plan Details]
+    D --> E[Scale User Requirements to Plan Validity]
+    E --> F[Calculate Excess Voice, Data, & SMS]
+    F --> G[Calculate Excess Charges & Total Plan Cost]
+    G --> H[Normalize Total Cost to Monthly Equivalent]
+    H --> I{Normalized Cost <= Budget?}
+    I -- Yes --> J[Mark Plan as Eligible & Add to List]
+    I -- No --> K[Mark Plan as Ineligible]
+    J --> C
+    K --> C
+    C -- No --> L{Any Eligible Plans Found?}
+    L -- No --> M[Output: No Eligible Plan Within Budget]
+    L -- Yes --> N[Find Plan with Minimum Monthly Cost]
+    N --> O[Output Optimal Plan & Cost Breakdown]
+    M --> P[End]
+    O --> P
+    Here is the detailed step-by-step **Algorithm** for the Multi-Plan Telecommunications Cost Optimization system:
+
+---
+
+### **Algorithm: Telecommunications Cost Optimization**
+
+#### **Phase 1: Input Initialization**
+
+1. **Input User Requirements:**
+* Monthly Voice Minutes ($V_{req}$)
+* Monthly Data Allowance in GB ($D_{req}$)
+* Monthly SMS Count ($S_{req}$)
+* Maximum Monthly Budget ($B_{max}$)
+
+
+2. **Input Catalog:**
+* A list of available mobile plans ($P$), where each plan $p \in P$ contains:
+* Name ($p_{name}$)
+* Base Price ($p_{price}$)
+* Validity Period in days ($p_{days}$)
+* Included Voice Minutes ($p_{iv}$)
+* Included Data in GB ($p_{id}$)
+* Included SMS Count ($p_{is}$)
+* Overage Rate per excess Voice Minute ($p_{rv}$)
+* Overage Rate per excess GB of Data ($p_{rd}$)
+* Overage Rate per excess SMS ($p_{rs}$)
+
+
+
+
+3. **Initialize Collections:**
+* Create an empty list `evaluation_results` to store computation outcomes for each plan.
+* Set standard monthly normalization constant: $M_{days} = 30.0$ days.
+
+
+
+---
+
+#### **Phase 2: Plan Evaluation and Normalization Loop**
+
+For each plan $p$ in the catalog $P$:
+
+1. **Scale User Requirements to Plan Validity:**
+* Calculate the duration scale factor: $\text{Scale} = \frac{p_{days}}{M_{days}}$
+* Compute required consumption for the plan's specific validity period:
+* $\text{Req}_V = V_{req} \times \text{Scale}$
+* $\text{Req}_D = D_{req} \times \text{Scale}$
+* $\text{Req}_S = S_{req} \times \text{Scale}$
+
+
+
+
+2. **Calculate Excess Usage:**
+* $\text{Excess}_V = \max(0, \text{Req}_V - p_{iv})$
+* $\text{Excess}_D = \max(0, \text{Req}_D - p_{id})$
+* $\text{Excess}_S = \max(0, \text{Req}_S - p_{is})$
+
+
+3. **Calculate Costs:**
+* Compute Total Overage Charges:
+
+$$\text{ExcessCost} = (\text{Excess}_V \times p_{rv}) + (\text{Excess}_D \times p_{rd}) + (\text{Excess}_S \times p_{rs})$$
+
+
+* Compute Total Plan Cost for the Validity Period:
+
+$$\text{PeriodCost} = p_{price} + \text{ExcessCost}$$
+
+
+* Normalize Cost to a Standard Monthly Equivalent:
+
+$$\text{MonthlyCost} = \left(\frac{\text{PeriodCost}}{p_{days}}\right) \times M_{days}$$
+
+
+
+
+4. **Apply Budget Constraint Filter:**
+* If $\text{MonthlyCost} \le B_{max}$:
+* Mark plan status as **Eligible** ($\text{IsEligible} = \text{True}$)
+
+
+* Else:
+* Mark plan status as **Ineligible / Exceeds Budget** ($\text{IsEligible} = \text{False}$)
+
+
+
+
+5. **Store Results:**
+* Append plan details, calculated excess values, period cost, normalized monthly cost, and eligibility status to `evaluation_results`.
+
+
+
+---
+
+#### **Phase 3: Optimal Plan Selection & Output**
+
+1. **Filter Eligible Options:**
+* Extract all plans from `evaluation_results` where $\text{IsEligible} == \text{True}$.
+
+
+2. **Find Most Economical Plan:**
+* If the list of eligible plans is **not empty**:
+* Select the plan with the **minimum** `MonthlyCost`.
+* Designate this plan as the **Optimal Plan**.
+
+
+* Else:
+* Flag that no plans meet the budget criteria.
+
+
+
+
+3. **Display Output:**
+* Print the complete evaluation report for all evaluated plans.
+* Highlight the optimal plan name and its normalized monthly cost, or display a budget warning message if no eligible plans were found.
+* class MobilePlan:
     def __init__(self, name, base_price, validity_days, inc_voice, inc_data, inc_sms, rate_voice, rate_data, rate_sms):
         self.name = name
         self.base_price = base_price          # Base price for the validity period
